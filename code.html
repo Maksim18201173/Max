@@ -133,6 +133,115 @@
             color: #0066cc;
         }
         
+        /* Мобильное меню */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding-top: 60px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .mobile-nav {
+            padding: 20px;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-nav ul li a {
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav ul li a i {
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        .mobile-search-box {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+        }
+        
+        .mobile-search-box input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 3px 0 0 3px;
+            font-size: 16px;
+        }
+        
+        .mobile-search-box button {
+            padding: 12px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 0 3px 3px 0;
+            cursor: pointer;
+        }
+        
+        .mobile-user-actions {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-user-actions a {
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .mobile-user-actions span {
+            display: block;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
         /* Main Content */
         .main-content {
             padding: 30px 0;
@@ -365,17 +474,50 @@
                 margin-top: 10px;
             }
             
-            nav ul li {
-                margin-right: 10px;
-                margin-bottom: 5px;
-            }
-            
             .banner {
                 padding: 20px 15px;
             }
             
             .banner h1 {
                 font-size: 24px;
+            }
+        }
+        
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 992px) {
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 15px;
+            }
+            
+            .header-top {
+                position: relative;
+            }
+            
+            .contacts {
+                margin-right: 40px;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-bottom {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 993px) {
+            .mobile-menu {
+                display: none !important;
             }
         }
     </style>
@@ -385,6 +527,9 @@
     <header>
         <div class="container">
             <div class="header-top">
+                <button class="mobile-menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <div class="logo"><span class="phon">Phon</span><span class="electro">electro</span></div>
                 <div class="contacts">
                     <i class="fas fa-phone"></i> 8-800-123-45-67
@@ -403,7 +548,7 @@
                 </nav>
                 
                 <div class="search-box">
-                    <input type="text" placeholder="Поиск товаров...">
+                    <input type="text" placeholder="Поиск товаров..." id="desktopSearch">
                     <button><i class="fas fa-search"></i></button>
                 </div>
                 
@@ -415,6 +560,34 @@
             </div>
         </div>
     </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="menuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Главная</a></li>
+                <li><a href="#"><i class="fas fa-mobile-alt"></i> Смартфоны</a></li>
+                <li><a href="#"><i class="fas fa-laptop"></i> Ноутбуки</a></li>
+                <li><a href="#"><i class="fas fa-tv"></i> Телевизоры</a></li>
+                <li><a href="#"><i class="fas fa-headphones"></i> Аудио</a></li>
+            </ul>
+        </div>
+        
+        <div class="mobile-search-box">
+            <input type="text" placeholder="Поиск товаров..." id="mobileSearch">
+            <button id="mobileSearchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="mobile-user-actions">
+            <a href="#"><i class="fas fa-user"></i><span>Профиль</span></a>
+            <a href="#"><i class="fas fa-heart"></i><span>Избранное</span></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i><span>Корзина</span></a>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="main-content container">
@@ -562,9 +735,9 @@
                 });
             });
             
-            // Поиск
+            // Поиск для десктопной версии
             const searchButton = document.querySelector('.search-box button');
-            const searchInput = document.querySelector('.search-box input');
+            const searchInput = document.querySelector('#desktopSearch');
             
             searchButton.addEventListener('click', function() {
                 if (searchInput.value.trim() === '') {
@@ -579,6 +752,70 @@
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     searchButton.click();
+                }
+            });
+            
+            // Мобильное меню
+            const menuToggle = document.getElementById('menuToggle');
+            const menuClose = document.getElementById('menuClose');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+            const mobileSearchInput = document.getElementById('mobileSearch');
+            
+            // Открытие меню
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Блокируем прокрутку основного контента
+            });
+            
+            // Закрытие меню
+            menuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = ''; // Возвращаем прокрутку
+            });
+            
+            // Закрытие меню при клике на ссылку
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // Здесь можно добавить переход на нужную страницу
+                });
+            });
+            
+            // Поиск в мобильном меню
+            mobileSearchBtn.addEventListener('click', function() {
+                if (mobileSearchInput.value.trim() === '') {
+                    alert('Введите поисковый запрос');
+                    mobileSearchInput.focus();
+                } else {
+                    alert('Поиск: ' + mobileSearchInput.value);
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    // В реальном сайте здесь будет переход на страницу результатов поиска
+                }
+            });
+            
+            mobileSearchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    mobileSearchBtn.click();
+                }
+            });
+            
+            // Закрытие меню при клике вне его области
+            mobileMenu.addEventListener('click', function(e) {
+                if (e.target === mobileMenu) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Закрытие меню при нажатии Esc
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             });
         });
