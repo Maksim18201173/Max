@@ -530,7 +530,7 @@
                 <button class="mobile-menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="logo"><span class="phon">Phon</span><span class="electro">electro</span></div>
+                <a href="index.html" class="logo"><span class="phon">Phon</span><span class="electro">electro</span></a>
                 <div class="contacts">
                     <i class="fas fa-phone"></i> 8-800-123-45-67
                 </div>
@@ -539,11 +539,11 @@
             <div class="header-bottom">
                 <nav>
                     <ul>
-                        <li><a href="#"><i class="fas fa-home"></i> Главная</a></li>
-                        <li><a href="#"><i class="fas fa-mobile-alt"></i> Смартфоны</a></li>
-                        <li><a href="#"><i class="fas fa-laptop"></i> Ноутбуки</a></li>
-                        <li><a href="#"><i class="fas fa-tv"></i> Телевизоры</a></li>
-                        <li><a href="#"><i class="fas fa-headphones"></i> Аудио</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="smartphones.html"><i class="fas fa-mobile-alt"></i> Смартфоны</a></li>
+                        <li><a href="laptops.html"><i class="fas fa-laptop"></i> Ноутбуки</a></li>
+                        <li><a href="tv.html"><i class="fas fa-tv"></i> Телевизоры</a></li>
+                        <li><a href="audio.html"><i class="fas fa-headphones"></i> Аудио</a></li>
                     </ul>
                 </nav>
                 
@@ -569,11 +569,11 @@
         
         <div class="mobile-nav">
             <ul>
-                <li><a href="#"><i class="fas fa-home"></i> Главная</a></li>
-                <li><a href="#"><i class="fas fa-mobile-alt"></i> Смартфоны</a></li>
-                <li><a href="#"><i class="fas fa-laptop"></i> Ноутбуки</a></li>
-                <li><a href="#"><i class="fas fa-tv"></i> Телевизоры</a></li>
-                <li><a href="#"><i class="fas fa-headphones"></i> Аудио</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                <li><a href="smartphones.html"><i class="fas fa-mobile-alt"></i> Смартфоны</a></li>
+                <li><a href="laptops.html"><i class="fas fa-laptop"></i> Ноутбуки</a></li>
+                <li><a href="tv.html"><i class="fas fa-tv"></i> Телевизоры</a></li>
+                <li><a href="audio.html"><i class="fas fa-headphones"></i> Аудио</a></li>
             </ul>
         </div>
         
@@ -601,37 +601,37 @@
         <!-- Categories -->
         <h2 class="section-title">Категории товаров</h2>
         <div class="categories">
-            <div class="category">
+            <a href="smartphones.html" class="category">
                 <div class="category-icon">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
                 <h3>Смартфоны</h3>
                 <p>От 5 990₽</p>
-            </div>
+            </a>
             
-            <div class="category">
+            <a href="laptops.html" class="category">
                 <div class="category-icon">
                     <i class="fas fa-laptop"></i>
                 </div>
                 <h3>Ноутбуки</h3>
                 <p>От 24 990₽</p>
-            </div>
+            </a>
             
-            <div class="category">
+            <a href="tv.html" class="category">
                 <div class="category-icon">
                     <i class="fas fa-tv"></i>
                 </div>
                 <h3>Телевизоры</h3>
                 <p>От 15 990₽</p>
-            </div>
+            </a>
             
-            <div class="category">
+            <a href="audio.html" class="category">
                 <div class="category-icon">
                     <i class="fas fa-headphones"></i>
                 </div>
                 <h3>Наушники</h3>
                 <p>От 1 990₽</p>
-            </div>
+            </a>
         </div>
         
         <!-- Products -->
@@ -711,7 +711,7 @@
                     <h3>Контакты</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-phone"></i> 8-800-123-45-67</li>
-                        <li><i class="fas fa-envelope"></i> info@electronmarket.ru</li>
+                        <li><i class="fas fa-envelope"></i> info@phonelectro.ru</li>
                         <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Электронная, 15</li>
                     </ul>
                 </div>
@@ -780,7 +780,6 @@
                 link.addEventListener('click', function() {
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
-                    // Здесь можно добавить переход на нужную страницу
                 });
             });
             
@@ -793,7 +792,6 @@
                     alert('Поиск: ' + mobileSearchInput.value);
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
-                    // В реальном сайте здесь будет переход на страницу результатов поиска
                 }
             });
             
