@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Смартфоны | Phonelectro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Стили такие же как в index.html, можно вынести в отдельный файл */
+        /* Здесь для краткости оставим только основные стили */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.4;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #0055aa;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo .phon {
+            color: #0066cc;
+        }
+        
+        .logo .electro {
+            color: #ff6600;
+        }
+        
+        .contacts {
+            font-size: 14px;
+        }
+        
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: #333;
+            font-weight: bold;
+        }
+        
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu-toggle {
+            display: none;
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        /* Основной контент */
+        .main-content {
+            padding: 30px 0;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .page-description {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 180px;
+            background-color: #f8f9fa;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+        
+        .product-img img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        
+        .product-price span {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .product-rating {
+            color: #ff9900;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0 15px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <button class="mobile-menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="logo"><span class="phon">Phon</span><span class="electro">electro</span></a>
+                <div class="contacts">
+                    <i class="fas fa-phone"></i> 8-800-123-45-67
+                </div>
+            </div>
+            
+            <div class="header-bottom">
+                <nav>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                        <li><a href="smartphones.html"><i class="fas fa-mobile-alt"></i> Смартфоны</a></li>
+                        <li><a href="laptops.html"><i class="fas fa-laptop"></i> Ноутбуки</a></li>
+                        <li><a href="tv.html"><i class="fas fa-tv"></i> Телевизоры</a></li>
+                        <li><a href="audio.html"><i class="fas fa-headphones"></i> Аудио</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content container">
+        <h1 class="page-title">Смартфоны</h1>
+        <p class="page-description">Широкий выбор смартфонов от ведущих производителей по выгодным ценам. Apple, Samsung, Xiaomi, Realme и другие бренды.</p>
+        
+        <div class="products">
+            <div class="product">
+                <div class="product-img">
+                    <img src="ph1.png" alt="Смартфон Samsung Galaxy A54">
+                </div>
+                <h3 class="product-title">Смартфон Samsung Galaxy A54 128GB</h3>
+                <div class="product-price">27 990₽ <span>31 990₽</span></div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <button class="btn" style="width: 100%;">Купить</button>
+            </div>
+            
+            <div class="product">
+                <div class="product-img">
+                    <div style="font-size: 50px; color: #0066cc;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+                <h3 class="product-title">Смартфон Apple iPhone 14 128GB</h3>
+                <div class="product-price">74 990₽</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <button class="btn" style="width: 100%;">Купить</button>
+            </div>
+            
+            <div class="product">
+                <div class="product-img">
+                    <div style="font-size: 50px; color: #0066cc;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+                <h3 class="product-title">Смартфон Xiaomi Redmi Note 12 Pro</h3>
+                <div class="product-price">24 990₽ <span>28 990₽</span></div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <button class="btn" style="width: 100%;">Купить</button>
+            </div>
+            
+            <div class="product">
+                <div class="product-img">
+                    <div style="font-size: 50px; color: #0066cc;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+                <h3 class="product-title">Смартфон Realme 10 Pro 5G</h3>
+                <div class="product-price">21 990₽</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <button class="btn" style="width: 100%;">Купить</button>
+            </div>
+            
+            <div class="product">
+                <div class="product-img">
+                    <div style="font-size: 50px; color: #0066cc;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+                <h3 class="product-title">Смартфон Samsung Galaxy S23 256GB</h3>
+                <div class="product-price">69 990₽</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <button class="btn" style="width: 100%;">Купить</button>
+            </div>
+            
+            <div class="product">
+                <div class="product-img">
+                    <div style="font-size: 50px; color: #0066cc;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+                <h3 class="product-title">Смартфон Google Pixel 7 128GB</h3>
+                <div class="product-price">54 990₽</div>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <button class="btn" style="width: 100%;">Купить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Phonelectro. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buyButtons = document.querySelectorAll('.product .btn');
+            
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productTitle = this.closest('.product').querySelector('.product-title').textContent;
+                    alert('Товар "' + productTitle + '" добавлен в корзину');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
