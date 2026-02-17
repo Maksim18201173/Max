@@ -1,7 +1,6 @@
 # main/urls.py
 from django.urls import path
 from . import views
-
 urlpatterns = [
     path('', views.index, name='index'),  # или views.home, если хотите назвать home
     path('smartphones/', views.smartphones, name='smartphones'),
